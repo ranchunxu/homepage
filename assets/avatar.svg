@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0a0a"/>
+      <stop offset="0.55" stop-color="#1a1508"/>
+      <stop offset="1" stop-color="#0a0a0a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.32" cy="0.22" r="0.9">
+      <stop offset="0" stop-color="#d4a73a" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#d4a73a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="txt" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0d28c"/>
+      <stop offset="1" stop-color="#d4a73a"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <circle cx="120" cy="90" r="200" fill="url(#glow)"/>
+  <circle cx="200" cy="200" r="158" fill="none" stroke="#d4a73a" stroke-opacity="0.28" stroke-width="1.5"/>
+  <circle cx="200" cy="200" r="130" fill="none" stroke="#8a6d1f" stroke-opacity="0.18" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="200" y="238" font-family="Segoe UI, -apple-system, sans-serif" font-size="122" font-weight="700" fill="url(#txt)" text-anchor="middle" letter-spacing="4">RCX</text>
+</svg>

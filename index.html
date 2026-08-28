@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=ai-legible&utm_source=comment&utm_medium=referral&utm_id=8c4009e1-a829-47ce-a66d-9b80c7f5be1f
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+<meta name="hosting-provider" content="Netlify">
+<meta name="netlify-deploy" content="https://netlify.new/?utm_campaign=ai-legible&amp;utm_source=meta&amp;utm_medium=referral&amp;utm_id=8c4009e1-a829-47ce-a66d-9b80c7f5be1f">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="个人在线简历，展示教育背景、专业技能、项目经历与联系方式。">
+  <title>冉淳旭 · 个人主页</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans+SC:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans+SC:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap"></noscript>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="pageLoader" class="page-loader" aria-hidden="true">
+    <span class="loader-mark">RCX</span>
+  </div>
+  <div id="scrollProgress" class="scroll-progress" aria-hidden="true"></div>
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+  <div class="bg-layer" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#hero">
+      <span class="brand-mark" id="brandMark">ZS</span>
+      <span class="brand-text" id="brandText">在线简历</span>
+    </a>
+    <nav class="site-nav" id="siteNav" aria-label="主导航">
+      <a href="#about">关于我</a>
+      <a href="#skills">专业能力</a>
+      <a href="#personality">个人特质</a>
+      <a href="#experience">学习经历</a>
+      <a href="#projects">项目作品</a>
+      <a href="#contact">联系方式</a>
+    </nav>
+    <div class="header-actions">
+      <button id="bgmToggle" class="icon-btn bgm-toggle" type="button" aria-label="播放背景音乐" aria-pressed="false">
+        <i data-lucide="music"></i>
+      </button>
+      <button id="navToggle" class="icon-btn nav-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section" id="hero">
+      <div class="hero-stage hero-inner">
+        <div class="hero-copy" data-depth="0.8">
+          <p class="hero-kicker"><span></span>个人在线简历</p>
+          <h1 class="hero-title">
+            <span class="hero-greet" id="heroGreet">你好，我是</span>
+            <span class="hero-name" id="heroName">你的姓名</span>
+            <span class="hero-name-en" id="heroNameEn">LI JIA EN</span>
+          </h1>
+          <p class="hero-typed" aria-live="polite">
+            <span id="typedText"></span><span class="caret" aria-hidden="true"></span>
+          </p>
+          <p class="hero-desc" id="heroDesc">这里是一段简短的个人介绍。</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">
+              <i data-lucide="folder-git-2"></i><span>查看项目</span>
+            </a>
+            <a class="btn btn-ghost" href="#contact">
+              <i data-lucide="send"></i><span>联系我</span>
+            </a>
+          </div>
+        </div>
+        <div class="hero-visual" data-depth="0.45" aria-hidden="true">
+          <div class="hero-orbit" aria-hidden="true"></div>
+          <div class="hero-avatar-frame">
+            <img id="heroAvatar" src="assets/avatar.webp" alt="李家恩的头像" fetchpriority="high" decoding="async">
+            <span class="hero-avatar-status"><i data-lucide="graduation-cap"></i>上海理工大学 · 2026 级</span>
+          </div>
+          <span class="hero-badge badge-1" data-depth="1.3"><i data-lucide="cpu"></i>AI</span>
+          <span class="hero-badge badge-2" data-depth="1.1"><i data-lucide="gamepad-2"></i>游戏开发</span>
+          <span class="hero-badge badge-3" data-depth="1.4"><i data-lucide="sparkles"></i>AI 认证 ×9</span>
+          <span class="hero-badge badge-4" data-depth="1.2"><i data-lucide="dumbbell"></i>运动</span>
+          <span class="hero-badge badge-5" data-depth="1.5"><i data-lucide="code-2"></i>JavaScript</span>
+          <span class="hero-badge badge-6" data-depth="1.2"><i data-lucide="film"></i>剪映</span>
+        </div>
+      </div>
+      <a class="scroll-hint" href="#about" aria-label="向下滚动">
+        <i data-lucide="chevron-down"></i>
+      </a>
+    </section>
+
+    <section class="section section-about" id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">About Me</p>
+          <h2>关于我</h2>
+          <p class="section-sub">基本信息、教育背景与个人介绍</p>
+        </div>
+        <div class="about-grid">
+          <div class="about-media reveal">
+            <div class="photo-frame">
+              <img id="aboutPhoto" src="assets/avatar.webp" alt="个人照片" loading="lazy" decoding="async">
+              <span class="photo-badge" id="photoBadge">ZS</span>
+            </div>
+            <div class="media-caption">
+              <span id="mediaName">你的姓名</span>
+              <span id="mediaRole">目标岗位</span>
+            </div>
+          </div>
+          <div class="about-info reveal">
+            <div class="about-lead">
+              <h3 id="aboutIntroTitle">保持好奇，持续创作</h3>
+              <p id="aboutIntro">这里可以写一段关于你自己的介绍，例如专业方向、正在学习的内容和对未来的期待。</p>
+            </div>
+            <ul class="info-grid" id="infoList"></ul>
+            <div class="about-motto">
+              <i data-lucide="quote"></i>
+              <p id="aboutMotto">把想法变成作品，把作品变成经验。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-skills" id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">My Services</p>
+          <h2>专业能力</h2>
+          <p class="section-sub">技术方向、工具与技能掌握程度</p>
+        </div>
+        <div class="skills-grid" id="servicesGrid"></div>
+        <div class="skills-bars-wrap reveal">
+          <h3>技能熟练度</h3>
+          <div class="skills-bars" id="skillBars"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-personality" id="personality">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">About My Character</p>
+          <h2>个人特质</h2>
+          <p class="section-sub">兴趣、性格与个人风格</p>
+        </div>
+        <p class="personality-intro reveal" id="personalityIntro"></p>
+        <div class="personality-grid" id="personalityGrid"></div>
+        <div class="personality-tags reveal" id="personalityTags"></div>
+        <h3 class="personality-groups-title reveal">性格特点</h3>
+        <div class="personality-groups reveal" id="personalityGroups"></div>
+      </div>
+    </section>
+
+    <section class="section section-experience" id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Education & Experience</p>
+          <h2>学习经历</h2>
+          <p class="section-sub">在校经历、专业学习与实践经历</p>
+        </div>
+        <ol class="timeline" id="timeline"></ol>
+      </div>
+    </section>
+
+    <section class="section section-projects" id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">My Production</p>
+          <h2>项目作品</h2>
+          <p class="section-sub">参与过的课程设计、个人项目与实践活动</p>
+        </div>
+        <div class="project-grid" id="projectGrid"></div>
+      </div>
+    </section>
+
+    <section class="section section-contact" id="contact">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Contact Me</p>
+          <h2>联系方式</h2>
+          <p class="section-sub">欢迎交流学习、实习或项目合作</p>
+        </div>
+        <div class="contact-grid" id="contactGrid"></div>
+        <div class="contact-tags reveal" id="contactTags"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p id="footerText">© 2026 你的姓名 · 个人在线简历</p>
+  </footer>
+
+  <nav class="dot-nav" id="dotNav" aria-label="页面导航"></nav>
+
+  <button id="backToTop" class="back-to-top" type="button" aria-label="返回顶部">
+    <i data-lucide="arrow-up"></i>
+  </button>
+
+  <noscript>
+    <div class="noscript-tip">请启用 JavaScript 以查看完整简历内容。</div>
+  </noscript>
+
+  <audio id="bgm" src="assets/bgm.mp3" loop preload="none"></audio>
+  <script src="js/lucide.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

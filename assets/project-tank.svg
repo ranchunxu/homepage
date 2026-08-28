@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0a0a"/>
+      <stop offset="0.5" stop-color="#16130a"/>
+      <stop offset="1" stop-color="#0a0a0a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.3" r="0.8">
+      <stop offset="0" stop-color="#d4a73a" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#d4a73a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect width="800" height="450" fill="url(#glow)"/>
+  <g fill="none" stroke="#d4a73a" stroke-opacity="0.28" stroke-width="1">
+    <rect x="40" y="40" width="720" height="370" rx="16"/>
+    <rect x="56" y="56" width="688" height="338" rx="12"/>
+  </g>
+  <text x="400" y="210" font-size="88" text-anchor="middle">🛡️</text>
+  <text x="400" y="310" font-family="Segoe UI, -apple-system, sans-serif" font-size="46" font-weight="700" fill="#f5f0e6" text-anchor="middle">坦克大战</text>
+  <text x="400" y="352" font-family="Segoe UI, -apple-system, sans-serif" font-size="19" fill="#d4a73a" text-anchor="middle" letter-spacing="1">HTML5 Canvas · 碰撞检测 · WebAudio</text>
+</svg>
