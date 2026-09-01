@@ -1,210 +1,410 @@
 <!doctype html>
-<html lang="zh-CN" data-theme="dark">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-<!-- This site is hosted on Netlify. Anyone can build and deploy a site
-     like this one for free: https://netlify.new/?utm_campaign=ai-legible&utm_source=comment&utm_medium=referral&utm_id=8c4009e1-a829-47ce-a66d-9b80c7f5be1f
-     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
-<meta name="hosting-provider" content="Netlify">
-<meta name="netlify-deploy" content="https://netlify.new/?utm_campaign=ai-legible&amp;utm_source=meta&amp;utm_medium=referral&amp;utm_id=8c4009e1-a829-47ce-a66d-9b80c7f5be1f">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="个人在线简历，展示教育背景、专业技能、项目经历与联系方式。">
-  <title>冉淳旭 · 个人主页</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans+SC:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans+SC:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap"></noscript>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="冉淳旭的个人主页，上海理工大学电子信息大类 2026 级，AI 技能认证、网页游戏开发与家教实践。">
+<title>冉淳旭 · 个人主页</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Ctext x='16' y='23' font-family='Georgia' font-size='20' fill='%23fff' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+  :root{
+    --bg:#050505; --ink:#f4f4f1; --muted:#a0a09a; --faint:#6a6a65;
+    --line:rgba(255,255,255,.12); --serif:"Noto Serif SC",serif;
+    --sans:"Noto Sans SC",system-ui,sans-serif; --mono:"JetBrains Mono",monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;
+    overflow-x:hidden;line-height:1.7}
+  #bg{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;display:block}
+
+  .wrap{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:0 40px}
+  @media(max-width:640px){.wrap{padding:0 22px}}
+
+  header.site{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;
+    align-items:center;padding:26px 40px;mix-blend-mode:difference}
+  header.site .brand{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:#fff;text-decoration:none;text-transform:uppercase}
+  header.site nav{display:flex;gap:26px}
+  header.site nav a{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:#cfcfca;text-decoration:none;transition:color .3s}
+  header.site nav a:hover{color:#fff}
+  @media(max-width:640px){header.site{padding:20px 22px}header.site nav{display:none}}
+
+  section{position:relative;padding:120px 0}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);
+    display:flex;align-items:center;gap:14px;margin-bottom:34px}
+  .eyebrow::before{content:"";width:34px;height:1px;background:var(--line)}
+  .sec-title{font-family:var(--serif);font-size:clamp(30px,5vw,46px);font-weight:400;line-height:1.1;letter-spacing:-.01em}
+  .sec-title em{font-style:italic}
+
+  .hero{min-height:100vh;display:flex;align-items:center;padding-top:80px}
+  .hero .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:28px}
+  .hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(64px,14vw,150px);line-height:.92;
+    letter-spacing:-.02em;text-wrap:balance}
+  .hero h1 .en{display:block;font-family:var(--mono);font-size:clamp(13px,2vw,17px);letter-spacing:.5em;
+    color:var(--muted);margin-top:22px;font-weight:400}
+  .hero .desc{margin-top:34px;max-width:46ch;font-size:clamp(15px,2vw,18px);color:var(--muted);font-weight:300;line-height:1.9}
+  .hero .acts{margin-top:44px;display:flex;gap:18px;flex-wrap:wrap}
+  .link{font-family:var(--mono);font-size:13px;letter-spacing:.08em;color:var(--ink);text-decoration:none;
+    padding:12px 22px;border:1px solid var(--line);border-radius:999px;transition:all .35s}
+  .link:hover{background:#fff;color:#000;border-color:#fff}
+  .hero .scroll{position:absolute;bottom:36px;left:0;right:0;text-align:center;font-family:var(--mono);
+    font-size:10px;letter-spacing:.3em;color:var(--faint);text-transform:uppercase}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.6,.2,1),transform .9s cubic-bezier(.2,.6,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  .about .lead{font-family:var(--serif);font-size:clamp(22px,3.6vw,34px);line-height:1.5;max-width:30ch;font-weight:400}
+  .about .lead span{color:var(--muted)}
+  .about .facts{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+  .about .fact{padding:26px 6px 0}
+  .about .fact .k{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+  .about .fact .v{margin-top:8px;font-size:15px;color:var(--ink)}
+  @media(max-width:640px){.about .facts{grid-template-columns:1fr;gap:22px}}
+
+  .rows{border-top:1px solid var(--line)}
+  .row{display:grid;grid-template-columns:120px 1fr auto;gap:28px;align-items:baseline;
+    padding:30px 0;border-bottom:1px solid var(--line);transition:background .3s}
+  .row .idx{font-family:var(--mono);font-size:12px;color:var(--faint);letter-spacing:.1em}
+  .row .body h3{font-family:var(--serif);font-weight:400;font-size:clamp(20px,3vw,28px);letter-spacing:-.01em}
+  .row .body p{margin-top:6px;color:var(--muted);font-size:14px;max-width:60ch}
+  .row .meta{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.08em;text-align:right;line-height:2}
+  .row a.meta{color:var(--muted);text-decoration:none;transition:color .3s}
+  .row a.meta:hover{color:#fff}
+  @media(max-width:640px){.row{grid-template-columns:1fr;gap:8px}.row .meta{text-align:left}}
+
+  .certs-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:34px}
+  .certs-nav{display:flex;gap:10px;flex-shrink:0}
+  .certs-nav button{width:46px;height:46px;border:1px solid var(--line);background:transparent;color:var(--ink);
+    font-family:var(--mono);font-size:18px;line-height:1;cursor:pointer;border-radius:999px;
+    transition:background .3s,color .3s,border-color .3s,opacity .3s;display:grid;place-items:center}
+  .certs-nav button:hover{background:#fff;color:#000;border-color:#fff}
+  .certs-nav button:disabled{opacity:.25;cursor:default}
+  .certs-nav button:disabled:hover{background:transparent;color:var(--ink);border-color:var(--line)}
+  .certs .track{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 18px;
+    scrollbar-width:none;-ms-overflow-style:none;cursor:grab}
+  .certs .track::-webkit-scrollbar{display:none}
+  .certs .track:active{cursor:grabbing}
+  .cert-card{flex:0 0 auto;width:min(340px,76vw);scroll-snap-align:start}
+  .cert-card a{display:block;border:1px solid var(--line);background:rgba(255,255,255,.02);overflow:hidden;
+    text-decoration:none;transition:border-color .35s}
+  .cert-card a:hover{border-color:rgba(255,255,255,.45)}
+  .cert-card img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;filter:contrast(.98) saturate(.92)}
+  .cert-card .cap{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--faint);
+    padding:13px 15px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  .cert-card .cap .num{color:var(--muted)}
+
+  .contact .big{font-family:var(--serif);font-size:clamp(30px,5.5vw,56px);font-weight:400;line-height:1.15}
+  .contact .big a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);transition:border-color .3s}
+  .contact .big a:hover{border-color:#fff}
+  .contact .note{margin-top:34px;color:var(--muted);font-size:15px;font-weight:300;max-width:44ch}
+
+  footer.site{border-top:1px solid var(--line);padding:44px 0 60px;display:flex;justify-content:space-between;
+    font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--faint);text-transform:uppercase}
+  @media(max-width:640px){footer.site{flex-direction:column;gap:10px}}
+</style>
 </head>
 <body>
-  <div id="pageLoader" class="page-loader" aria-hidden="true">
-    <span class="loader-mark">RCX</span>
-  </div>
-  <div id="scrollProgress" class="scroll-progress" aria-hidden="true"></div>
-  <canvas id="particle-canvas" aria-hidden="true"></canvas>
-  <div class="bg-layer" aria-hidden="true"></div>
+<canvas id="bg" aria-hidden="true"></canvas>
 
-  <header class="site-header">
-    <a class="brand" href="#hero">
-      <span class="brand-mark" id="brandMark">ZS</span>
-      <span class="brand-text" id="brandText">在线简历</span>
-    </a>
-    <nav class="site-nav" id="siteNav" aria-label="主导航">
-      <a href="#about">关于我</a>
-      <a href="#skills">专业能力</a>
-      <a href="#personality">个人特质</a>
-      <a href="#experience">学习经历</a>
-      <a href="#projects">项目作品</a>
-      <a href="#contact">联系方式</a>
-    </nav>
-    <div class="header-actions">
-      <button id="bgmToggle" class="icon-btn bgm-toggle" type="button" aria-label="播放背景音乐" aria-pressed="false">
-        <i data-lucide="music"></i>
-      </button>
-      <button id="navToggle" class="icon-btn nav-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false">
-        <i data-lucide="menu"></i>
-      </button>
+<header class="site">
+  <a class="brand" href="#top">RCX · 冉淳旭</a>
+  <nav>
+    <a href="#about">关于</a>
+    <a href="#skills">能力</a>
+    <a href="#projects">项目</a>
+    <a href="#certs">证书</a>
+    <a href="#contact">联系</a>
+  </nav>
+</header>
+
+<main class="wrap" id="top">
+
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="kicker">Portfolio · 2026</p>
+      <h1>冉淳旭<span class="en">RAN&nbsp;CHUN&nbsp;XU</span></h1>
+      <p class="desc">上海理工大学 · 电子信息大类 · 2026 级本科生。<br>9 项 AI 技能认证，两个独立上线的网页游戏 —— 一个正在把想法做成产品的新生。</p>
+      <div class="acts">
+        <a class="link" href="#projects">查看项目</a>
+        <a class="link" href="#contact">联系我</a>
+      </div>
     </div>
-  </header>
+    <div class="scroll">Scroll</div>
+  </section>
 
-  <main>
-    <section class="hero section" id="hero">
-      <div class="hero-stage hero-inner">
-        <div class="hero-copy" data-depth="0.8">
-          <p class="hero-kicker"><span></span>个人在线简历</p>
-          <h1 class="hero-title">
-            <span class="hero-greet" id="heroGreet">你好，我是</span>
-            <span class="hero-name" id="heroName">你的姓名</span>
-            <span class="hero-name-en" id="heroNameEn">LI JIA EN</span>
-          </h1>
-          <p class="hero-typed" aria-live="polite">
-            <span id="typedText"></span><span class="caret" aria-hidden="true"></span>
-          </p>
-          <p class="hero-desc" id="heroDesc">这里是一段简短的个人介绍。</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects">
-              <i data-lucide="folder-git-2"></i><span>查看项目</span>
-            </a>
-            <a class="btn btn-ghost" href="#contact">
-              <i data-lucide="send"></i><span>联系我</span>
-            </a>
-          </div>
-        </div>
-        <div class="hero-visual" data-depth="0.45" aria-hidden="true">
-          <div class="hero-orbit" aria-hidden="true"></div>
-          <div class="hero-avatar-frame">
-            <img id="heroAvatar" src="assets/avatar.webp" alt="李家恩的头像" fetchpriority="high" decoding="async">
-            <span class="hero-avatar-status"><i data-lucide="graduation-cap"></i>上海理工大学 · 2026 级</span>
-          </div>
-          <span class="hero-badge badge-1" data-depth="1.3"><i data-lucide="cpu"></i>AI</span>
-          <span class="hero-badge badge-2" data-depth="1.1"><i data-lucide="gamepad-2"></i>游戏开发</span>
-          <span class="hero-badge badge-3" data-depth="1.4"><i data-lucide="sparkles"></i>AI 认证 ×9</span>
-          <span class="hero-badge badge-4" data-depth="1.2"><i data-lucide="dumbbell"></i>运动</span>
-          <span class="hero-badge badge-5" data-depth="1.5"><i data-lucide="code-2"></i>JavaScript</span>
-          <span class="hero-badge badge-6" data-depth="1.2"><i data-lucide="film"></i>剪映</span>
-        </div>
+  <section class="about reveal" id="about">
+    <p class="eyebrow">01 — 关于</p>
+    <p class="lead">把想法变成作品，<span>把作品变成经验。</span></p>
+    <div class="facts">
+      <div class="fact"><div class="k">学校 / 专业</div><div class="v">上海理工大学 · 电子信息大类</div></div>
+      <div class="fact"><div class="k">AI 认证</div><div class="v">阿里云 6 项 · 科大讯飞 3 项</div></div>
+      <div class="fact"><div class="k">期待</div><div class="v">学科竞赛 · 课题组 · 项目合作</div></div>
+    </div>
+  </section>
+
+  <section class="skills reveal" id="skills">
+    <p class="eyebrow">02 — 能力</p>
+    <h2 class="sec-title">能做<em>什么</em></h2>
+    <div class="rows" style="margin-top:44px">
+      <div class="row"><div class="idx">01</div><div class="body"><h3>AI 应用</h3><p>主流 AI 工具覆盖文生文、文生图、文生视频，打磨提示词与产出物。</p></div><div class="meta">TEXT / IMG / VIDEO</div></div>
+      <div class="row"><div class="idx">02</div><div class="body"><h3>游戏开发</h3><p>原生 JavaScript + Canvas 独立完成两款网页游戏，掌握碰撞检测、Boss 战、程序化音效。</p></div><div class="meta">CANVAS / JS</div></div>
+      <div class="row"><div class="idx">03</div><div class="body"><h3>办公与内容</h3><p>Office 套件整理文档、表格与演示，剪映完成视频剪辑、字幕与配乐。</p></div><div class="meta">OFFICE / 剪映</div></div>
+      <div class="row"><div class="idx">04</div><div class="body"><h3>沟通辅导</h3><p>一对一家教经验，善于把抽象知识拆解讲清楚，耐心负责、跟进反馈。</p></div><div class="meta">1-ON-1</div></div>
+    </div>
+  </section>
+
+  <section class="projects reveal" id="projects">
+    <p class="eyebrow">03 — 项目</p>
+    <h2 class="sec-title">做过的<em>作品</em></h2>
+    <div class="rows" style="margin-top:44px">
+      <div class="row">
+        <div class="idx">01</div>
+        <div class="body"><h3>坦克大战 · 网页小游戏</h3><p>移动射击、敌方 AI 追击、砖墙与基地碰撞、波次通关，地图中央拼出「RCX」标识。</p></div>
+        <a class="meta" href="https://ranchunxu.github.io/tank-battle/" target="_blank" rel="noopener">在线试玩 ↗</a>
       </div>
-      <a class="scroll-hint" href="#about" aria-label="向下滚动">
-        <i data-lucide="chevron-down"></i>
-      </a>
-    </section>
-
-    <section class="section section-about" id="about">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">About Me</p>
-          <h2>关于我</h2>
-          <p class="section-sub">基本信息、教育背景与个人介绍</p>
-        </div>
-        <div class="about-grid">
-          <div class="about-media reveal">
-            <div class="photo-frame">
-              <img id="aboutPhoto" src="assets/avatar.webp" alt="个人照片" loading="lazy" decoding="async">
-              <span class="photo-badge" id="photoBadge">ZS</span>
-            </div>
-            <div class="media-caption">
-              <span id="mediaName">你的姓名</span>
-              <span id="mediaRole">目标岗位</span>
-            </div>
-          </div>
-          <div class="about-info reveal">
-            <div class="about-lead">
-              <h3 id="aboutIntroTitle">保持好奇，持续创作</h3>
-              <p id="aboutIntro">这里可以写一段关于你自己的介绍，例如专业方向、正在学习的内容和对未来的期待。</p>
-            </div>
-            <ul class="info-grid" id="infoList"></ul>
-            <div class="about-motto">
-              <i data-lucide="quote"></i>
-              <p id="aboutMotto">把想法变成作品，把作品变成经验。</p>
-            </div>
-          </div>
-        </div>
+      <div class="row">
+        <div class="idx">02</div>
+        <div class="body"><h3>星际猎手 · 飞机大战</h3><p>4 大 Boss × 3 阶段、5 种武器 × 5 级升级、无尽波次，赛博朋克霓虹科技风。</p></div>
+        <a class="meta" href="https://ranchunxu.github.io/plane-battle/" target="_blank" rel="noopener">在线试玩 ↗</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section section-skills" id="skills">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">My Services</p>
-          <h2>专业能力</h2>
-          <p class="section-sub">技术方向、工具与技能掌握程度</p>
-        </div>
-        <div class="skills-grid" id="servicesGrid"></div>
-        <div class="skills-bars-wrap reveal">
-          <h3>技能熟练度</h3>
-          <div class="skills-bars" id="skillBars"></div>
-        </div>
+  <section class="experience reveal" id="experience">
+    <p class="eyebrow">04 — 经历</p>
+    <h2 class="sec-title">走过的<em>路</em></h2>
+    <div class="rows" style="margin-top:44px">
+      <div class="row"><div class="idx">01</div><div class="body"><h3>上海理工大学</h3><p>电子信息大类 · 本科在读，主修基础课程并主动自学 AI 与编程。</p></div><div class="meta">2026.09 起</div></div>
+      <div class="row"><div class="idx">02</div><div class="body"><h3>暑期一对一辅导</h3><p>制定分阶段预习计划，拆解抽象知识点，帮助学生提前建立知识框架。</p></div><div class="meta">2026 暑假</div></div>
+    </div>
+  </section>
+
+  <section class="certs reveal" id="certs">
+    <div class="certs-head">
+      <div>
+        <p class="eyebrow">05 — 证书</p>
+        <h2 class="sec-title">AI 技能<em>认证</em></h2>
       </div>
-    </section>
-
-    <section class="section section-personality" id="personality">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">About My Character</p>
-          <h2>个人特质</h2>
-          <p class="section-sub">兴趣、性格与个人风格</p>
-        </div>
-        <p class="personality-intro reveal" id="personalityIntro"></p>
-        <div class="personality-grid" id="personalityGrid"></div>
-        <div class="personality-tags reveal" id="personalityTags"></div>
-        <h3 class="personality-groups-title reveal">性格特点</h3>
-        <div class="personality-groups reveal" id="personalityGroups"></div>
+      <div class="certs-nav">
+        <button id="certPrev" aria-label="上一张">←</button>
+        <button id="certNext" aria-label="下一张">→</button>
       </div>
-    </section>
+    </div>
+    <div class="track" id="certTrack">
+      <div class="cert-card"><a href="assets/certs/cert1.webp" target="_blank" rel="noopener"><img src="assets/certs/cert1.webp" alt="AI 技能认证证书 1" loading="lazy"><div class="cap"><span>AI 技能认证证书</span><span class="num">01 / 09</span></div></a></div>
+      <div class="cert-card"><a href="assets/certs/cert2.webp" target="_blank" rel="noopener"><img src="assets/certs/cert2.webp" alt="AI 技能认证证书 2" loading="lazy"><div class="cap"><span>AI 技能认证证书</span><span class="num">02 / 09</span></div></a></div>
+      <div class="cert-card"><a href="assets/certs/cert3.webp" target="_blank" rel="noopener"><img src="assets/certs/cert3.webp" alt="AI 技能认证证书 3" loading="lazy"><div class="cap"><span>AI 技能认证证书</span><span class="num">03 / 09</span></div></a></div>
+      <div class="cert-card"><a href="assets/certs/cert4.webp" target="_blank" rel="noopener"><img src="assets/certs/cert4.webp" alt="AI 技能认证证书 4" loading="lazy"><div class="cap"><span>AI 技能认证证书</span><span class="num">04 / 09</span></div></a></div>
+      <div class="cert-card"><a href="assets/certs/cert5.webp" target="_blank" rel="noopener"><img src="assets/certs/cert5.webp" alt="AI 技能认证证书 5" loading="lazy"><div class="cap"><span>AI 技能认证证书</span><span class="num">05 / 09</span></div></a></div>
+      <div class="cert-card"><a href="assets/certs/cert6.webp" target="_blank" rel="noopener"><img src="assets/certs/cert6.webp" alt="AI 技能认证证书 6" loading="lazy"><div class="cap"><span>AI 技能认证证书</span><span class="num">06 / 09</span></div></a></div>
+      <div class="cert-card"><a href="assets/certs/cert7.webp" target="_blank" rel="noopener"><img src="assets/certs/cert7.webp" alt="AI 技能认证证书 7" loading="lazy"><div class="cap"><span>AI 技能认证证书</span><span class="num">07 / 09</span></div></a></div>
+      <div class="cert-card"><a href="assets/certs/cert8.webp" target="_blank" rel="noopener"><img src="assets/certs/cert8.webp" alt="AI 技能认证证书 8" loading="lazy"><div class="cap"><span>AI 技能认证证书</span><span class="num">08 / 09</span></div></a></div>
+      <div class="cert-card"><a href="assets/certs/cert9.webp" target="_blank" rel="noopener"><img src="assets/certs/cert9.webp" alt="AI 技能认证证书 9" loading="lazy"><div class="cap"><span>AI 技能认证证书</span><span class="num">09 / 09</span></div></a></div>
+    </div>
+  </section>
 
-    <section class="section section-experience" id="experience">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">Education & Experience</p>
-          <h2>学习经历</h2>
-          <p class="section-sub">在校经历、专业学习与实践经历</p>
-        </div>
-        <ol class="timeline" id="timeline"></ol>
-      </div>
-    </section>
+  <section class="contact reveal" id="contact">
+    <p class="eyebrow">06 — 联系</p>
+    <h2 class="sec-title" style="margin-bottom:44px">保持<em>联系</em></h2>
+    <div class="big">
+      <a href="mailto:mypeshsp1@gmail.com">mypeshsp1@gmail.com</a><br>
+      <a href="https://github.com/ranchunxu" target="_blank" rel="noopener">github.com/ranchunxu</a>
+    </div>
+    <p class="note">欢迎交流学习、实习、竞赛或项目合作，期待与你聊聊。</p>
+  </section>
 
-    <section class="section section-projects" id="projects">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">My Production</p>
-          <h2>项目作品</h2>
-          <p class="section-sub">参与过的课程设计、个人项目与实践活动</p>
-        </div>
-        <div class="project-grid" id="projectGrid"></div>
-      </div>
-    </section>
+</main>
 
-    <section class="section section-contact" id="contact">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">Contact Me</p>
-          <h2>联系方式</h2>
-          <p class="section-sub">欢迎交流学习、实习或项目合作</p>
-        </div>
-        <div class="contact-grid" id="contactGrid"></div>
-        <div class="contact-tags reveal" id="contactTags"></div>
-      </div>
-    </section>
-  </main>
+<footer class="site">
+  <span>© 2026 冉淳旭</span>
+  <span>Electronics · Game · Teaching</span>
+</footer>
 
-  <footer class="site-footer">
-    <p id="footerText">© 2026 你的姓名 · 个人在线简历</p>
-  </footer>
+<script>
+/* ============================================================
+   液态以太背景 —— 单趟流动噪声（fbm 域扭曲）
+   和之前那个"能动"的 dither 用的是同一套单趟全屏 shader，
+   只是去掉了像素抖动、换成平滑银色渐变 → 一定能流动。
+   ============================================================ */
+(function () {
+  var canvas = document.getElementById('bg');
+  var gl = canvas.getContext('webgl2') || canvas.getContext('webgl');
+  if (!gl) { startCanvas2D(); return; }
 
-  <nav class="dot-nav" id="dotNav" aria-label="页面导航"></nav>
+  var VERT = '#version 300 es\nlayout(location=0) in vec2 aPos;\nvoid main(){ gl_Position = vec4(aPos,0.0,1.0); }';
+  var FRAG = [
+    '#version 300 es',
+    'precision highp float;',
+    'out vec4 fragColor;',
+    'uniform vec2 u_res;',
+    'uniform float u_time;',
+    'uniform vec2 u_mouse;',
+    'vec4 mod289(vec4 x){return x-floor(x*(1.0/289.0))*289.0;}',
+    'vec4 permute(vec4 x){return mod289(((x*34.0)+1.0)*x);}',
+    'vec4 taylorInvSqrt(vec4 r){return 1.79284291400159-0.85373472095314*r;}',
+    'vec2 fade(vec2 t){return t*t*t*(t*(t*6.0-15.0)+10.0);}',
+    'float cnoise(vec2 P){',
+    '  vec4 Pi=floor(P.xyxy)+vec4(0.0,0.0,1.0,1.0);',
+    '  vec4 Pf=fract(P.xyxy)-vec4(0.0,0.0,1.0,1.0);',
+    '  Pi=mod289(Pi);',
+    '  vec4 ix=Pi.xzxz;vec4 iy=Pi.yyww;vec4 fx=Pf.xzxz;vec4 fy=Pf.yyww;',
+    '  vec4 i=permute(permute(ix)+iy);',
+    '  vec4 gx=fract(i*(1.0/41.0))*2.0-1.0;vec4 gy=abs(gx)-0.5;',
+    '  vec4 tx=floor(gx+0.5);gx=gx-tx;',
+    '  vec2 g00=vec2(gx.x,gy.x);vec2 g10=vec2(gx.y,gy.y);vec2 g01=vec2(gx.z,gy.z);vec2 g11=vec2(gx.w,gy.w);',
+    '  vec4 norm=taylorInvSqrt(vec4(dot(g00,g00),dot(g01,g01),dot(g10,g10),dot(g11,g11)));',
+    '  g00*=norm.x;g01*=norm.y;g10*=norm.z;g11*=norm.w;',
+    '  float n00=dot(g00,vec2(fx.x,fy.x));float n10=dot(g10,vec2(fx.y,fy.y));',
+    '  float n01=dot(g01,vec2(fx.z,fy.z));float n11=dot(g11,vec2(fx.w,fy.w));',
+    '  vec2 fade_xy=fade(Pf.xy);',
+    '  vec2 n_x=mix(vec2(n00,n01),vec2(n10,n11),fade_xy.x);',
+    '  return 2.3*mix(n_x.x,n_x.y,fade_xy.y);',
+    '}',
+    'float fbm(vec2 p){',
+    '  float v=0.0;float a=0.5;',
+    '  for(int i=0;i<5;i++){v+=a*abs(cnoise(p));p*=2.0;a*=0.5;}',
+    '  return v;',
+    '}',
+    'void main(){',
+    '  vec2 uv=(gl_FragCoord.xy*2.0-u_res)/min(u_res.x,u_res.y);',
+    '  float t=u_time*0.06;',
+    '  vec2 m=(u_mouse*2.0-u_res)/min(u_res.x,u_res.y);',
+    '  float md=length(uv-m);',
+    '  float infl=1.0-smoothstep(0.0,0.35,md);',
+    '  float sw=infl*2.5;',
+    '  float c=cos(sw),s=sin(sw);',
+    '  vec2 d=uv-m;',
+    '  vec2 p=(m+vec2(c*d.x-s*d.y,s*d.x+c*d.y))*1.6;',
+    '  vec2 q=vec2(t*0.6,t*0.45);',
+    '  float f=fbm(p+fbm(p+q)+vec2(t*0.15));',
+    '  f=clamp(f*1.7-0.25,0.0,1.0);',
+    '  f=clamp(f+infl*0.3,0.0,1.0);',
+    '  vec3 c0=vec3(0.04,0.04,0.05);',
+    '  vec3 c1=vec3(0.50,0.51,0.56);',
+    '  vec3 c2=vec3(0.93,0.94,0.98);',
+    '  vec3 col=mix(c0,c1,smoothstep(0.0,0.62,f));',
+    '  col=mix(col,c2,smoothstep(0.62,1.0,f));',
+    '  fragColor=vec4(col,1.0);',
+    '}'
+  ].join('\n');
 
-  <button id="backToTop" class="back-to-top" type="button" aria-label="返回顶部">
-    <i data-lucide="arrow-up"></i>
-  </button>
+  function compile(type, src) {
+    var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) { console.error(gl.getShaderInfoLog(s)); return null; }
+    return s;
+  }
+  var p = gl.createProgram();
+  var vs = compile(gl.VERTEX_SHADER, VERT), fs = compile(gl.FRAGMENT_SHADER, FRAG);
+  if (!vs || !fs) { startCanvas2D(); return; }
+  gl.attachShader(p, vs); gl.attachShader(p, fs); gl.linkProgram(p);
+  if (!gl.getProgramParameter(p, gl.LINK_STATUS)) { startCanvas2D(); return; }
+  gl.useProgram(p);
 
-  <noscript>
-    <div class="noscript-tip">请启用 JavaScript 以查看完整简历内容。</div>
-  </noscript>
+  var buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);
+  var aPos = gl.getAttribLocation(p, 'aPos');
+  gl.enableVertexAttribArray(aPos);
+  gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+  var uRes = gl.getUniformLocation(p, 'u_res');
+  var uTime = gl.getUniformLocation(p, 'u_time');
+  var uMouse = gl.getUniformLocation(p, 'u_mouse');
 
-  <audio id="bgm" src="assets/bgm.mp3" loop preload="none"></audio>
-  <script src="js/lucide.min.js"></script>
-  <script src="js/config.js"></script>
-  <script src="js/main.js"></script>
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    gl.uniform2f(uRes, canvas.width, canvas.height);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  /* 鼠标：平滑跟随，让旋涡过渡自然 */
+  var mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2, tx: window.innerWidth / 2, ty: window.innerHeight / 2 };
+  window.addEventListener('pointermove', function (e) { mouse.tx = e.clientX; mouse.ty = e.clientY; });
+
+  var start = performance.now();
+  function frame(now) {
+    mouse.x += (mouse.tx - mouse.x) * 0.14;
+    mouse.y += (mouse.ty - mouse.y) * 0.14;
+    gl.uniform1f(uTime, (now - start) / 1000);
+    gl.uniform2f(uMouse, mouse.x, window.innerHeight - mouse.y);
+    gl.drawArrays(gl.TRIANGLES, 0, 6);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+
+/* ---------- 兜底：Canvas2D 银灰光团 ---------- */
+function startCanvas2D() {
+  var canvas = document.getElementById('bg');
+  var ctx = canvas.getContext('2d');
+  if (!ctx) return;
+  var W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  function resize() { W = window.innerWidth; H = window.innerHeight; canvas.width = W*dpr; canvas.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
+  resize(); window.addEventListener('resize', resize);
+  var N = 22, blobs = [];
+  for (var i = 0; i < N; i++) blobs.push({ x: Math.random()*W, y: Math.random()*H, r: (0.07+Math.random()*0.13)*Math.max(W,H), lit: 50+Math.random()*24, ph: Math.random()*Math.PI*2 });
+  var t = 0;
+  function field(x, y) { var s = 0.0020; return [ Math.sin(y*s*4+t*0.5)*0.6+Math.cos(x*s*3-t*0.35)*0.4, Math.cos(x*s*4+t*0.4)*0.6+Math.sin(y*s*3+t*0.55)*0.4 ]; }
+  function loop() {
+    t += 0.016;
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = 'rgba(5,5,8,0.10)'; ctx.fillRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'lighter';
+    for (var i = 0; i < N; i++) {
+      var b = blobs[i], f = field(b.x, b.y), spd = 1.1 + Math.sin(t*0.3+b.ph)*0.5;
+      b.x += f[0]*spd*2.4; b.y += f[1]*spd*2.4;
+      if (b.x < -b.r) b.x = W+b.r; else if (b.x > W+b.r) b.x = -b.r;
+      if (b.y < -b.r) b.y = H+b.r; else if (b.y > H+b.r) b.y = -b.r;
+      var g = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.r);
+      g.addColorStop(0, 'hsla(0,0%,'+(b.lit)+'%,0.5)');
+      g.addColorStop(0.55, 'hsla(0,0%,'+(b.lit-6)+'%,0.2)');
+      g.addColorStop(1, 'hsla(0,0%,'+(b.lit)+'%,0)');
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, Math.PI*2); ctx.fill();
+    }
+    ctx.globalCompositeOperation = 'source-over';
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+}
+
+/* ---------- 证书轮播：箭头滚动 ---------- */
+(function () {
+  var track = document.getElementById('certTrack');
+  if (!track) return;
+  var prev = document.getElementById('certPrev');
+  var next = document.getElementById('certNext');
+
+  function step() {
+    var card = track.querySelector('.cert-card');
+    return card ? card.getBoundingClientRect().width + 22 : 340;
+  }
+  function update() {
+    var max = track.scrollWidth - track.clientWidth;
+    if (prev) prev.disabled = track.scrollLeft <= 4;
+    if (next) next.disabled = track.scrollLeft >= max - 4;
+  }
+  if (prev) prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+  if (next) next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: 'smooth' }); });
+  track.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+
+/* ---------- 滚动渐显 ---------- */
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: 0.12 });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
 </body>
 </html>
