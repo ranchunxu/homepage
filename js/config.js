@@ -48,7 +48,7 @@ window.RESUME_CONFIG = {
     {
       icon: 'message-circle',
       title: '沟通与辅导',
-      desc: '有一对一家教经验，善于把抽象知识拆解讲清楚，耐心负责、主动跟进反馈。'
+      desc: '有约一个月的一对一辅导经历，尝试把知识点拆成步骤讲解，并根据反馈调整节奏。'
     }
   ],
   skills: {
@@ -96,7 +96,7 @@ window.RESUME_CONFIG = {
       },
       {
         title: '耐心与责任心',
-        summary: '一对一家教全流程负责，善于拆解讲解、跟进反馈，与家长学生沟通顺畅。'
+        summary: '有约一个月的暑期一对一辅导经历，尝试分步讲解，根据学生反馈调整节奏。'
       },
       {
         title: '主动学习型',
@@ -119,36 +119,51 @@ window.RESUME_CONFIG = {
       title: '暑期一对一辅导',
       major: '家教老师 · 约 1 个月',
       points: [
-        '承担一对一课业辅导，制定分阶段预习计划，帮助学生系统掌握新学期课程内容。',
-        '将抽象知识点拆解为分步讲解，配合针对性练习，帮学生提前建立知识框架、降低开学后的学习难度。',
-        '根据学生反馈动态调整讲解节奏，耐心引导，培养其主动提问与独立思考的习惯。',
-        '主动向家长同步预习进度，沟通顺畅；辅导后学生对新课程建立了清晰认知，学习信心明显提升。'
+        '参与数学、物理的新学期预习辅导。',
+        '尝试将知识点拆成步骤讲解，根据学生反馈调整节奏。'
       ]
+    },
+    {
+      period: '2026 年',
+      title: 'RST水中机器鱼仿真比赛',
+      major: '参赛经历 · 入围国赛',
+      points: ['参与水中机器鱼仿真，借助AI调试test.py，根据运行表现继续调整。']
     }
   ],
   projects: [
     {
-      title: '校园导览 · 华为云比赛',
-      desc: '担任队长，借助AI推进构思、框架、功能实现与调试，队友负责PPT、视频和答辩。项目延续暑期新生手册，整理校园信息并提供导览。',
-      image: 'assets/proj-campus.svg',
-      tech: ['比赛队长', 'AI辅助实现', '校园服务'],
-      link: 'https://ranchunxu.github.io/campus-map/',
-      source: 'https://github.com/ranchunxu'
+      title: '逐光 · 上理新生校园助手',
+      desc: '华为云比赛项目，包含校园地图、路线、新生手册、培养计划与入学待办。担任队长，借助AI推进构思、框架、功能实现与调试；队友负责PPT、视频和答辩。',
+      image: 'assets/proj-campus-real.png',
+      tech: ['华为云比赛', '比赛队长', 'AI辅助实现'],
+      link: 'https://ranchunxu.github.io/campus-map/'
     },
     {
       title: '信息采集与推送 · GitHub协作',
       desc: '与朋友在GitHub协作，借助AI开发微信、QQ信息采集与推送工具，将信息推送到飞书机器人和手机应用。这是共同参与的合作项目。',
-      image: 'assets/proj-collaboration.svg',
+      image: 'assets/proj-collaboration-guide.png',
       tech: ['GitHub协作', '信息整理', 'AI辅助开发'],
-      link: 'https://github.com/ranchunxu',
-      source: 'https://github.com/ranchunxu'
+      link: 'assets/proj-collaboration-guide.png'
+    },
+    {
+      title: '大学信息差手册',
+      desc: '围绕学分、绩点、分流、保研与奖学金等问题查阅、整理材料，尝试让新生更方便地理解和回看学校规则。',
+      image: 'assets/proj-handbook-current.png',
+      tech: ['资料整理', '新生服务'],
+      link: 'https://ranchunxu.github.io/usst-freshman-handbook/'
+    },
+    {
+      title: '个人简历 · 动效版',
+      desc: '个人介绍、校园项目与学习经历，记录实践过程和团队协作。',
+      image: 'assets/proj-resume.jpg',
+      tech: ['个人介绍', '项目实践'],
+      link: '#profile'
     }
   ],
   contact: {
     note: '欢迎交流学习、实习、竞赛或项目合作，期待与你聊聊。',
     items: [
       { icon: 'mail', label: '邮箱', value: 'mypeshsp1@gmail.com', href: 'mailto:mypeshsp1@gmail.com' },
-      { icon: 'github', label: 'GitHub', value: 'github.com/ranchunxu', href: 'https://github.com/ranchunxu' },
       { icon: 'phone', label: '电话', value: '157 2031 5319', href: 'tel:15720315319' },
       { icon: 'compass', label: '校园导览', value: '华为云比赛项目', href: 'https://ranchunxu.github.io/campus-map/' }
     ],

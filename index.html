@@ -44,7 +44,7 @@
   a{color:inherit}
 
   /* ---------- 背景：3D 画布 + 兜底渐变 ---------- */
-  #bg3d{position:fixed;inset:0;z-index:0;pointer-events:none;background:
+  #bg3d{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;background:
     radial-gradient(ellipse 80% 60% at 50% 30%,#1a4a7a 0%,#071c33 70%)}
   .wordmark{
     position:fixed;inset:0;z-index:1;pointer-events:none;user-select:none;
@@ -202,6 +202,8 @@
   .proj:hover .plink{color:var(--gold-bright);border-color:var(--gold-soft)}
   .proj .cover{height:170px;display:flex;align-items:center;justify-content:center;font-size:44px;overflow:hidden}
   .proj .cover img{width:100%;height:100%;object-fit:cover;display:block}
+  .proj .cover:has(img[src*="-real.png"]),.proj .cover:has(img[src*="-guide.png"]){height:auto;aspect-ratio:16/9;background:#f4f7fa}
+  .proj .cover img[src*="-real.png"],.proj .cover img[src*="-guide.png"]{object-fit:contain}
   .proj .pad{padding:22px}
   .proj h3{font-family:var(--serif);font-size:20px;font-weight:500;margin-bottom:10px}
   .proj p{color:var(--muted);font-weight:300;font-size:13px;line-height:1.8;margin-bottom:16px}
@@ -295,7 +297,7 @@
 </head>
 <body>
 
-<canvas id="bg3d"></canvas>
+<canvas id="bg3d" aria-hidden="true"></canvas>
 <div class="wordmark" id="wordmark">R A N</div>
 <div class="grain"></div>
 
@@ -423,7 +425,6 @@
         <p>欢迎交流学习、实习、竞赛或项目合作，期待与你聊聊。</p>
         <div class="contact-rows">
           <a class="crow" href="mailto:anitamasihi59@gmail.com"><span class="k">EMAIL</span><span class="v">anitamasihi59@gmail.com</span></a>
-          <a class="crow" href="https://github.com/ranchunxu" target="_blank" rel="noopener"><span class="k">GITHUB</span><span class="v">github.com/ranchunxu</span></a>
         </div>
       </div>
     </div>
@@ -476,8 +477,8 @@ const PROFILE = {
   motto: "把想法变成作品，把作品变成经验",
   services: [
     { title:"AI 应用探索", desc:"接触文生文、文生图与文生视频，尝试借助 AI 整理需求、辅助实现和修改作品。已完成阿里云 6 项、科大讯飞 3 项 AI 技能认证，继续补充编程基础。", tag:"AI // 学习 · 实践", imgs:["assets/svc-ai1.jpg","assets/svc-ai2.jpg","assets/svc-ai3.jpg"] },
-    { title:"项目实践与协作", desc:"在华为云校园导览项目中担任队长，推进构思、框架、功能实现和调试；也与朋友在 GitHub 协作信息工具。开发使用 AI 辅助，按实际分工参与。", tag:"PROJECT // 实现 · 协作", imgs:["assets/proj-campus.svg","assets/proj-collaboration.svg"] },
-    { title:"资料整理与表达", desc:"做过新生手册，也帮同学整理过文档和演示材料。关注信息来源、内容结构与阅读体验，愿意在竞赛资料和活动准备中承担具体工作。", tag:"INFO // 手册 · 材料", imgs:["assets/proj-handbook.jpg","assets/svc-ppt.jpg","assets/svc-promo.jpg"] },
+    { title:"项目实践与协作", desc:"在华为云校园导览项目中担任队长，推进构思、框架、功能实现和调试；也与朋友在 GitHub 协作信息工具。开发使用 AI 辅助，按实际分工参与。", tag:"PROJECT // 实现 · 协作", imgs:["assets/proj-campus-real.png","assets/proj-collaboration-real.png","assets/proj-collaboration-guide.png"] },
+    { title:"资料整理与表达", desc:"做过新生手册，也帮同学整理过文档和演示材料。关注信息来源、内容结构与阅读体验，愿意在竞赛资料和活动准备中承担具体工作。", tag:"INFO // 手册 · 材料", imgs:["assets/proj-handbook-current.png","assets/proj-curriculum-current.png"] },
     { title:"沟通与任务跟进", desc:"有暑期一对一辅导经历，尝试把知识拆成步骤讲清楚。在团队工作中，希望先确认要求和时间，说明进度，再结合反馈继续完善。", tag:"TEAM // 沟通 · 跟进", imgs:["assets/svc-jiajiao.jpg"] },
   ],
   experience: [
@@ -487,16 +488,16 @@ const PROFILE = {
     { date:"2026 暑假", title:"暑期一对一辅导", desc:"约一个月的数学、物理预习辅导，练习按步骤解释知识点，根据反馈调整讲解。", tags:["TEACH // 一对一辅导","COMM // 沟通表达"] },
   ],
   projects: [
-    { icon:"🧭", img:"assets/proj-campus.svg", title:"校园导览 · 华为云比赛", desc:"从新生手册延伸的校园信息与导览作品。我担任队长，借助 AI 推进构思、框架、功能实现和调试；队友负责 PPT、视频和答辩。", tags:["比赛队长","AI辅助实现","校园服务"], link:"https://ranchunxu.github.io/campus-map/", linkText:"体验校园导览" },
-    { icon:"🔗", img:"assets/proj-collaboration.svg", title:"信息采集与推送 · GitHub协作", desc:"与朋友在 GitHub 上协作，借助 AI 开发微信、QQ 信息采集与推送工具，将信息推送到飞书机器人和手机应用。这是共同参与的合作项目。", tags:["GitHub协作","信息整理","AI辅助开发"], link:"https://github.com/ranchunxu", linkText:"查看 GitHub 主页" },
-    { icon:"📖", img:"assets/proj-handbook.jpg", title:"大学信息差手册", desc:"围绕学分、绩点、分流、保研与奖学金等新生关心的问题整理材料，尝试把学校规则表达得清楚、方便回看。", tags:["资料整理","新生手册"], link:"https://ranchunxu.github.io/usst-freshman-handbook/", linkText:"在线阅读" },
-    { icon:"📄", img:"assets/proj-resume.jpg", title:"个人简历 · 在线版", desc:"一页式在线简历，移动端优先，支持深浅色切换与打印导出 PDF。", tags:["HTML/CSS","GITHUB PAGES"], link:"https://ranchunxu.github.io/rst-resume/", linkText:"查看简历" },
+    { icon:"🧭", img:"assets/proj-campus-real.png", title:"逐光 · 上理新生校园助手", desc:"华为云比赛项目，包含校园地图、路线、新生手册、培养计划与入学待办。我担任队长，借助 AI 推进构思、框架、功能实现与调试；队友负责 PPT、视频和答辩。", tags:["华为云比赛","比赛队长","AI辅助实现"], link:"https://ranchunxu.github.io/campus-map/", linkText:"体验校园助手" },
+    { icon:"🔗", img:"assets/proj-collaboration-guide.png", title:"信息采集与推送 · GitHub协作", desc:"与朋友在 GitHub 上协作，借助 AI 开发微信、QQ 信息采集与推送工具，将信息推送到飞书机器人和手机应用。这是共同参与的合作项目。", tags:["GitHub协作","信息整理","AI辅助开发"], link:"assets/proj-collaboration-guide.png", linkText:"查看项目截图" },
+    { icon:"📖", img:"assets/proj-handbook-current.png", title:"大学信息差手册", desc:"围绕学分、绩点、分流、保研与奖学金等新生关心的问题整理材料，尝试把学校规则表达得清楚、方便回看。", tags:["资料整理","新生手册"], link:"https://ranchunxu.github.io/usst-freshman-handbook/", linkText:"在线阅读" },
+    { icon:"📄", img:"assets/proj-resume.jpg", title:"个人简历 · 动效版", desc:"个人介绍、校园项目与学习经历，记录实践过程和团队协作。", tags:["个人介绍","项目实践"], link:"#profile", linkText:"查看在线简历" },
   ],
   honors: [
     { icon:"🏅", title:"阿里云 AI 技能认证 × 6", sub:"ALIBABA CLOUD // 生成式 AI 技能" },
     { icon:"📜", title:"科大讯飞 AI 技能认证 × 3", sub:"IFLYTEK // AI 技能认证" },
   ],
-  contact: { invite:"欢迎交流学习、实习、竞赛或项目合作，期待与你聊聊。", email:"anitamasihi59@gmail.com", github:"github.com/ranchunxu" },
+  contact: { invite:"欢迎交流学习、实习、竞赛或项目合作，期待与你聊聊。", email:"anitamasihi59@gmail.com" },
   // 个人助手内容与页面项目保持一致。
   kb: [
     { keys:["你是谁","名字","介绍"], answer:"我是{name}的个人助手。{name}是上海理工大学2026级电子信息类本科生，关注AI应用、资料整理与团队实践。参与华为云校园导览比赛，也和朋友在GitHub上协作信息工具。", evidence:["profile","projects"] },
@@ -504,7 +505,7 @@ const PROFILE = {
     { keys:["项目","作品","做过什么","比赛"], answer:"代表项目是华为云校园导览和与朋友在GitHub协作的信息采集推送工具。校园导览中本人担任队长，推进构思、框架、功能与调试，队友负责PPT、视频和答辩。两个项目均有AI辅助。", evidence:["projects"] },
     { keys:["科协","学术","活动","协作","分工"], answer:"希望参与竞赛资料核对、讲座与分享会准备，以及活动现场协助。可以结合项目与新生手册经历整理材料，也愿意交流实际使用AI工具的方法和遇到的问题。", evidence:["profile","services"] },
     { keys:["证书","认证","阿里云","讯飞"], answer:"{name}拥有 9 项 AI 技能认证：阿里云 6 项、科大讯飞 3 项，在 05 荣誉可以查看。", evidence:["honors"] },
-    { keys:["联系","微信","邮箱","合作"], answer:"联系方式在页面底部 06 联系：邮箱 {email}，GitHub {github}。欢迎交流学习、实习、竞赛或项目合作。", evidence:["contact"] },
+    { keys:["联系","微信","邮箱","合作"], answer:"联系方式在页面底部 06 联系：邮箱 {email}。欢迎交流学习、实习、竞赛或项目合作。", evidence:["contact"] },
     { keys:["学习","建议","怎么学"], answer:"我的方法是：先动手做一个最小的能跑的东西，再回头补理论。把想法变成作品，把作品变成经验。", evidence:["profile"] },
   ],
   // 可选：接入你自己的 OpenAI 兼容 API（留空 = 纯本地应答）
@@ -565,7 +566,7 @@ $(".timeline").insertAdjacentHTML("beforeend", PROFILE.experience.map(e=>`
   </div>`).join(""));
 
 $("#projGrid").innerHTML = PROFILE.projects.map(p=>`
-  <a class="proj" ${p.link?`href="${p.link}" target="_blank" rel="noopener"`:""}>
+  <a class="proj" ${p.link?`href="${p.link}"${p.link.startsWith("#")?"":' target="_blank" rel="noopener"'}`:""}>
     <div class="cover">${p.img?`<img src="${p.img}" alt="${p.title}" loading="lazy"/>`:p.icon}</div>
     <div class="pad"><h3>${p.title}</h3><p>${p.desc}</p>
       <div class="ptags">${p.tags.map(t=>`<span>${t}</span>`).join("")}</div>
@@ -688,7 +689,7 @@ function pushMsg(role,text,evidence){
   log.appendChild(div);log.scrollTop=log.scrollHeight;return div;
 }
 function localAnswer(q){
-  const fill=s=>s.replaceAll("{name}",PROFILE.name).replaceAll("{motto}",PROFILE.motto).replaceAll("{email}",PROFILE.contact.email).replaceAll("{github}",PROFILE.contact.github);
+  const fill=s=>s.replaceAll("{name}",PROFILE.name).replaceAll("{motto}",PROFILE.motto).replaceAll("{email}",PROFILE.contact.email);
   for(const item of PROFILE.kb) if(item.keys.some(k=>q.includes(k)))
     return {text:fill(item.answer),evidence:item.evidence};
   return {text:"这个问题我本地答不了。主人留给我的知识库只有主页内容～你可以在下面选一个问题，或把 API 配置填进 resume-gold.html 顶部的 PROFILE.api，我就接入真正的大模型。",evidence:[]};
@@ -734,23 +735,23 @@ document.querySelectorAll("a,button,.card,.cert").forEach(el=>{
 
 <script src="js/mobile-motion.js?v=20261031"></script>
 
-<!-- 3D 液态幕墙（three.js MIT 开源库；CDN 失败则静默降级为渐变背景）
+<!-- 3D 液态幕墙（three.js MIT 开源库，同源固定版本优先，保留CDN备用）
      配方：一整面正对镜头的"液体幕墙"铺满全屏，波峰朝镜头鼓起；
      物理反光材质 + 程序化"暖金夜色"环境贴图 => 涌浪与涟漪全靠反射高光显形 -->
 <script type="module">
 const backgroundMotion = matchMedia("(prefers-reduced-motion: reduce)");
 if (!backgroundMotion.matches) {
 try{
-  const THREE=await import("https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js");
+  const THREE=await import("./assets/vendor/three/three.module.js").catch(()=>import("https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"));
   const canvas=document.getElementById("bg3d");
-  const isMobile=innerWidth<768;
+  const isMobile=matchMedia("(max-width: 767px), (pointer: coarse)").matches;
   const renderer=new THREE.WebGLRenderer({canvas,antialias:!isMobile});
   renderer.setPixelRatio(Math.min(devicePixelRatio,isMobile?1.5:2));
   renderer.setSize(innerWidth,innerHeight);
   renderer.setClearColor(0x0a2440);
 
   const scene=new THREE.Scene();
-  scene.fog=new THREE.Fog(0x0a2440,18,48);
+  scene.fog=new THREE.Fog(0x0a2440,18,isMobile?60:48);
   const CAMZ=isMobile?42:35;
   const cam=new THREE.PerspectiveCamera(60,innerWidth/innerHeight,.1,100);
   cam.position.set(0,0,CAMZ);
@@ -788,7 +789,7 @@ try{
   scene.environment=pmrem.fromScene(buildEnv(),.03).texture;
 
   /* —— 全屏液态幕墙：正对镜头（不旋转），波峰沿 z 轴朝镜头鼓起 —— */
-  const geo=new THREE.PlaneGeometry(120,120,isMobile?64:140,isMobile?64:140);
+  const geo=new THREE.PlaneGeometry(120,120,isMobile?80:140,isMobile?80:140);
   const mat=new THREE.MeshPhysicalMaterial({
     color:0x1a4a7a, metalness:0, roughness:.12,
     clearcoat:1, clearcoatRoughness:.05,
@@ -800,24 +801,41 @@ try{
   // 指针 => 幕墙平面坐标（视口在幕墙处的投影范围）
   const halfH=Math.tan(Math.PI/6)*CAMZ, halfW=()=>halfH*innerWidth/innerHeight;
   const mouse={x:0,y:0},last={x:0,y:0};let ripples=[];
+  const clock=new THREE.Clock();
+  const rippleLimit=isMobile?10:30;
   const toWorld=(cx,cy)=>[(cx/innerWidth*2-1)*halfW(), -(cy/innerHeight*2-1)*halfH];
   addEventListener("mousemove",e=>{[mouse.x,mouse.y]=toWorld(e.clientX,e.clientY)},{passive:true});
   addEventListener("touchmove",e=>{if(e.touches[0])[mouse.x,mouse.y]=toWorld(e.touches[0].clientX,e.touches[0].clientY)},{passive:true});
-  addEventListener("touchstart",e=>{if(e.touches[0])[mouse.x,mouse.y]=toWorld(e.touches[0].clientX,e.touches[0].clientY)},{passive:true});
+  function tapWater(cx,cy){
+    if(document.hidden || backgroundMotion.matches)return;
+    [mouse.x,mouse.y]=toWorld(cx,cy);
+    last.x=mouse.x;last.y=mouse.y;
+    ripples.push({x:mouse.x,y:mouse.y,t:clock.getElapsedTime(),s:.9});
+    if(ripples.length>rippleLimit)ripples.shift();
+  }
+  if("PointerEvent" in window){
+    addEventListener("pointerdown",e=>{
+      if(e.isPrimary && e.button===0 && (e.pointerType==="touch" || isMobile))tapWater(e.clientX,e.clientY);
+    },{passive:true});
+  }else{
+    addEventListener("touchstart",e=>{if(e.touches[0])tapWater(e.touches[0].clientX,e.touches[0].clientY)},{passive:true});
+  }
 
   const pos=geo.attributes.position;
-  const clock=new THREE.Clock();
   let backgroundFrame=0;
-  function animate(){
+  let lastRenderAt=0;
+  function animate(now=performance.now()){
     if(document.hidden || backgroundMotion.matches){backgroundFrame=0;return}
     backgroundFrame=requestAnimationFrame(animate);
+    if(isMobile && now-lastRenderAt<1000/30)return;
+    lastRenderAt=now;
     const t=clock.getElapsedTime();
     // 快速移动 => 在指针处投一颗涟漪石子（最多 30 颗，存活 3 秒）
     const spd=Math.hypot(mouse.x-last.x,mouse.y-last.y);
     const lastDrop=ripples.length?ripples[ripples.length-1].t:0;
     if(spd>.12&&t-lastDrop>.08){
       ripples.push({x:mouse.x,y:mouse.y,t,s:Math.min(Math.max(spd*.6,.45),2)});
-      if(ripples.length>30)ripples.shift();
+      if(ripples.length>rippleLimit)ripples.shift();
     }
     last.x=mouse.x;last.y=mouse.y;
     ripples=ripples.filter(r=>t-r.t<3);
