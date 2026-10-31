@@ -8,7 +8,8 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⚡</text></svg>"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap"/>
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap"/></noscript>
 <style>
   /* ============================================================
      融合版：AETHER 动效 × homepage 蓝水质感
@@ -465,7 +466,7 @@
 <div class="cursor-ring" id="cRing"></div>
 
 <!-- Lenis 平滑滚动（MIT 开源库）。加载失败自动降级为原生滚动 -->
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" onload="window.startLenis?.()"></script>
 
 <script>
 /* ═══════════════════════════════════════════════════════════
@@ -586,14 +587,15 @@ $("#certGrid").innerHTML = Array.from({length:9},(_,i)=>
 /* ---------- 预加载器 ---------- */
 const pl=$("#pl"),plNum=$("#plNum"),plFill=$("#plFill");
 let real=0,shown=0,done=false;
-function finishPl(){if(done)return;done=true;pl.classList.add("done");document.documentElement.classList.remove("is-preloading")}
+function finishPl(){if(done)return;done=true;plNum.textContent="100%";plFill.style.width="100%";pl.classList.add("done");document.documentElement.classList.remove("is-preloading")}
 $("#plSkip").onclick=finishPl;
 const t0=performance.now();
-setTimeout(finishPl,3200); // 兜底：3.2s 后强制放行
+setTimeout(finishPl,650); // 首屏内容已就绪，不继续等待字体或可选库
 let lastT=t0;
 (function plTick(){
+  if(done)return;
   const now=performance.now(),dt=Math.max(0,now-lastT);lastT=now;
-  const tp=Math.min(100,(now-t0)/18);
+  const tp=Math.min(100,(now-t0)/5);
   real=document.readyState==="complete"?100:Math.min(tp,90);
   shown+=(real-shown)*(1-Math.exp(-dt/110));
   if(real-shown<.2)shown=real;
@@ -605,12 +607,14 @@ let lastT=t0;
 
 /* ---------- Lenis 平滑滚动（自动降级） ---------- */
 let lenis=null;
-if (window.Lenis && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+function startLenis(){
+  if(lenis || !window.Lenis || matchMedia("(prefers-reduced-motion: reduce)").matches)return;
   try{
     lenis=new Lenis({duration:1.1,smoothWheel:true});
     (function raf(t){lenis.raf(t);requestAnimationFrame(raf)})(0);
   }catch(e){lenis=null}
 }
+startLenis();
 function scrollToEl(el){ if(lenis) lenis.scrollTo(el,{offset:-20}); else el.scrollIntoView({behavior:"smooth"}); }
 
 /* ---------- 进场 reveal + 打字机（IntersectionObserver） ---------- */
@@ -742,12 +746,14 @@ document.querySelectorAll("a,button,.card,.cert").forEach(el=>{
 const backgroundMotion = matchMedia("(prefers-reduced-motion: reduce)");
 if (!backgroundMotion.matches) {
 try{
-  const THREE=await import("./assets/vendor/three/three.module.js").catch(()=>import("https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"));
+  const THREE=await import("./assets/vendor/three/three.module.min.js").catch(()=>import("https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"));
   const canvas=document.getElementById("bg3d");
   const isMobile=matchMedia("(max-width: 767px), (pointer: coarse)").matches;
-  const renderer=new THREE.WebGLRenderer({canvas,antialias:!isMobile});
-  renderer.setPixelRatio(Math.min(devicePixelRatio,isMobile?1.5:2));
-  renderer.setSize(innerWidth,innerHeight);
+  const renderer=new THREE.WebGLRenderer({canvas,antialias:false});
+  const pixelBudget=isMobile?650000:1400000;
+  const waterPixelRatio=()=>Math.min(devicePixelRatio||1,isMobile?1.15:1.5,Math.sqrt(pixelBudget/(innerWidth*innerHeight)));
+  renderer.setPixelRatio(waterPixelRatio());
+  renderer.setSize(innerWidth,innerHeight,false);
   renderer.setClearColor(0x0a2440);
 
   const scene=new THREE.Scene();
@@ -789,7 +795,7 @@ try{
   scene.environment=pmrem.fromScene(buildEnv(),.03).texture;
 
   /* —— 全屏液态幕墙：正对镜头（不旋转），波峰沿 z 轴朝镜头鼓起 —— */
-  const geo=new THREE.PlaneGeometry(120,120,isMobile?80:140,isMobile?80:140);
+  const geo=new THREE.PlaneGeometry(120,120,isMobile?64:96,isMobile?64:96);
   const mat=new THREE.MeshPhysicalMaterial({
     color:0x1a4a7a, metalness:0, roughness:.12,
     clearcoat:1, clearcoatRoughness:.05,
@@ -802,7 +808,7 @@ try{
   const halfH=Math.tan(Math.PI/6)*CAMZ, halfW=()=>halfH*innerWidth/innerHeight;
   const mouse={x:0,y:0},last={x:0,y:0};let ripples=[];
   const clock=new THREE.Clock();
-  const rippleLimit=isMobile?10:30;
+  const rippleLimit=isMobile?4:8;
   const toWorld=(cx,cy)=>[(cx/innerWidth*2-1)*halfW(), -(cy/innerHeight*2-1)*halfH];
   addEventListener("mousemove",e=>{[mouse.x,mouse.y]=toWorld(e.clientX,e.clientY)},{passive:true});
   addEventListener("touchmove",e=>{if(e.touches[0])[mouse.x,mouse.y]=toWorld(e.touches[0].clientX,e.touches[0].clientY)},{passive:true});
@@ -810,7 +816,7 @@ try{
     if(document.hidden || backgroundMotion.matches)return;
     [mouse.x,mouse.y]=toWorld(cx,cy);
     last.x=mouse.x;last.y=mouse.y;
-    ripples.push({x:mouse.x,y:mouse.y,t:clock.getElapsedTime(),s:.9});
+    ripples.push({x:mouse.x,y:mouse.y,t:clock.getElapsedTime(),s:.4});
     if(ripples.length>rippleLimit)ripples.shift();
   }
   if("PointerEvent" in window){
@@ -822,47 +828,63 @@ try{
   }
 
   const pos=geo.attributes.position;
+  const surface=pos.array;
+  const columns=geo.parameters.widthSegments+1,rows=geo.parameters.heightSegments+1;
+  const xWaves=new Float32Array(columns),yWaves=new Float32Array(rows);
+  function updateSurface(t){
+    const amplitude=isMobile?.9:.8;
+    // The same separable waves need trigonometry per row/column, not per vertex.
+    for(let col=0;col<columns;col++){
+      const x=surface[col*3];
+      xWaves[col]=Math.sin(x*.1+t*.5)*amplitude+Math.sin(x*.28-t*.8)*.15;
+    }
+    for(let row=0;row<rows;row++){
+      const y=surface[row*columns*3+1];
+      yWaves[row]=Math.cos(y*.15+t*.7)*amplitude+Math.cos(y*.22+t*.6)*.15;
+    }
+    for(let row=0;row<rows;row++)for(let col=0;col<columns;col++){
+      const offset=(row*columns+col)*3,x=surface[offset],y=surface[offset+1];
+      let z=xWaves[col]+yWaves[row];
+      for(const r of ripples){
+        const age=t-r.t,front=age*15,reach=front+10;
+        const dx=x-r.x,dy=y-r.y,distanceSquared=dx*dx+dy*dy;
+        if(distanceSquared>=reach*reach)continue;
+        const off=Math.sqrt(distanceSquared)-front;
+        z+=Math.cos(off*1.2)*Math.exp(-Math.abs(off)*.15)*Math.max(0,1-age/3)*r.s*1.6;
+      }
+      const dx=x-mouse.x,dy=y-mouse.y,distanceSquared=dx*dx+dy*dy;
+      if(distanceSquared<16)z-=(1-Math.sqrt(distanceSquared)/4)*.3;
+      surface[offset+2]=z;
+    }
+    pos.needsUpdate=true;geo.computeVertexNormals();
+  }
   let backgroundFrame=0;
   let lastRenderAt=0;
+  const frameInterval=1000/30;
   function animate(now=performance.now()){
     if(document.hidden || backgroundMotion.matches){backgroundFrame=0;return}
     backgroundFrame=requestAnimationFrame(animate);
-    if(isMobile && now-lastRenderAt<1000/30)return;
-    lastRenderAt=now;
+    const frameDelta=now-lastRenderAt;
+    if(frameDelta+.5<frameInterval)return;
+    lastRenderAt=now-Math.max(0,frameDelta-frameInterval)%frameInterval;
     const t=clock.getElapsedTime();
     // 快速移动 => 在指针处投一颗涟漪石子（最多 30 颗，存活 3 秒）
     const spd=Math.hypot(mouse.x-last.x,mouse.y-last.y);
     const lastDrop=ripples.length?ripples[ripples.length-1].t:0;
     if(spd>.12&&t-lastDrop>.08){
-      ripples.push({x:mouse.x,y:mouse.y,t,s:Math.min(Math.max(spd*.6,.45),2)});
+      ripples.push({x:mouse.x,y:mouse.y,t,s:Math.min(Math.max(spd*.3,.2),.9)});
       if(ripples.length>rippleLimit)ripples.shift();
     }
     last.x=mouse.x;last.y=mouse.y;
     ripples=ripples.filter(r=>t-r.t<3);
-    for(let i=0;i<pos.count;i++){
-      const x=pos.getX(i),y=pos.getY(i); // 幕墙正对镜头，x/y 即屏幕方向
-      // 环境涌浪：低频大鼓包 + 中频细波，让整面幕墙始终在流动
-      const waveAmplitude=isMobile?2:1.6;
-      let z=Math.sin(x*.1+t*.5)*waveAmplitude+Math.cos(y*.15+t*.7)*waveAmplitude
-           +Math.sin(x*.28-t*.8)*.3+Math.cos(y*.22+t*.6)*.3;
-      // 涟漪：扩张的波前环（宽波包 => 丝绸感亮带）
-      for(const r of ripples){
-        const age=t-r.t,front=age*15;
-        const dx=x-r.x,dy=y-r.y,dist=Math.hypot(dx,dy),off=dist-front;
-        if(dist<front+10) z+=Math.cos(off*1.2)*Math.exp(-Math.abs(off)*.15)*Math.max(0,1-age/3)*r.s*2.4;
-      }
-      // 指针处的小尾迹凹陷
-      const dc=Math.hypot(x-mouse.x,y-mouse.y);
-      if(dc<4)z-=(1-dc/4);
-      pos.setZ(i,z);
-    }
-    pos.needsUpdate=true;geo.computeVertexNormals();
+    updateSurface(t);
     renderer.render(scene,cam);
   }
   function syncBackgroundMotion(){
     if(document.hidden || backgroundMotion.matches){
       if(backgroundFrame)cancelAnimationFrame(backgroundFrame);
       backgroundFrame=0;
+      lastRenderAt=0;
       return;
     }
     if(!backgroundFrame)animate();
@@ -870,7 +892,16 @@ try{
   document.addEventListener("visibilitychange",syncBackgroundMotion);
   backgroundMotion.addEventListener("change",syncBackgroundMotion);
   syncBackgroundMotion();
-  addEventListener("resize",()=>{cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)});
+  let resizeTimer=0,lastWidth=innerWidth,lastHeight=innerHeight;
+  addEventListener("resize",()=>{
+    clearTimeout(resizeTimer);
+    resizeTimer=setTimeout(()=>{
+      if(lastWidth===innerWidth && lastHeight===innerHeight)return;
+      lastWidth=innerWidth;lastHeight=innerHeight;
+      cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();
+      renderer.setPixelRatio(waterPixelRatio());renderer.setSize(innerWidth,innerHeight,false);
+    },120);
+  },{passive:true});
 }catch(e){/* CDN 不可用：保留渐变兜底背景 */}
 }
 </script>
