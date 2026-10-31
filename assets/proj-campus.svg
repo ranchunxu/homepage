@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">校园导览 华为云比赛项目</title>
+  <desc id="desc">校园建筑与导览路径的示意插画，表达信息整理和校园服务</desc>
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#102f4b"/><stop offset="1" stop-color="#071c33"/></linearGradient><pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#8fcdee" stroke-opacity=".07"/></pattern></defs>
+  <path fill="url(#bg)" d="M0 0H960V540H0z"/><path fill="url(#grid)" d="M0 0H960V540H0z"/>
+  <g fill="none" stroke="#70bde6" stroke-width="2"><path d="M465 329l126-73 126 73-126 73z"/><path d="M465 329v-104l126-73 126 73v104M591 256V152M465 225l126 73 126-73"/><path d="M739 369l73-42 72 42-72 42zM739 369v-69l73-42 72 42v69M812 327v-69"/><path d="M482 420l109 63 227-131" stroke-dasharray="7 9" stroke-opacity=".7"/></g>
+  <g fill="#a3ddfa"><circle cx="482" cy="420" r="6"/><circle cx="818" cy="352" r="6"/></g>
+  <g font-family="system-ui, sans-serif"><text x="65" y="108" fill="#8fcdee" font-size="16" letter-spacing="4">CAMPUS GUIDE</text><text x="63" y="191" fill="#eef5fb" font-size="50" font-weight="600">校园导览</text><text x="65" y="241" fill="#a8c0d4" font-size="21">华为云比赛 · 团队项目</text><text x="65" y="444" fill="#8fcdee" font-size="17">需求整理 / 功能实现 / 调试</text></g>
+</svg>

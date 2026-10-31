@@ -1,7 +1,7 @@
 window.RESUME_CONFIG = {
   meta: {
     title: '冉淳旭 · 个人主页',
-    description: '冉淳旭的个人主页，上海理工大学电子信息大类 2026 级，AI 技能认证、网页游戏开发与家教实践。',
+    description: '冉淳旭的个人主页，上海理工大学2026级电子信息类本科生，参与华为云校园导览比赛，与朋友在GitHub协作信息工具。',
     brandMark: 'RCX',
     brandText: '冉淳旭'
   },
@@ -10,7 +10,7 @@ window.RESUME_CONFIG = {
     name: '冉淳旭',
     nameEn: 'RAN CHUN XU',
     roles: ['上海理工大学 · 电子信息大类 · 2026 级', 'AI 技能认证 × 9（阿里云 6 · 科大讯飞 3）', '喜欢把想法做成产品的实践者', '正在系统学习 Python 与 AI 应用'],
-    desc: '电子信息大类 2026 级本科生，持有阿里云 6 项、科大讯飞 3 项 AI 技能认证，具备一对一辅导经验。性格耐心踏实、表达清晰，正在系统学习编程与 AI 应用，动手做了自己的第一个小游戏，期待加入竞赛与课题组，在实践中成长。'
+    desc: '电子信息类2026级本科生，正在学习编程与AI应用。在华为云校园导览比赛项目中担任队长，也与朋友在GitHub协作信息采集与推送工具，希望把项目和资料整理经验用到学术交流与团队合作中。'
   },
   about: {
     photo: 'assets/avatar.svg',
@@ -18,11 +18,11 @@ window.RESUME_CONFIG = {
     name: '冉淳旭',
     role: '电子信息大类 · 2026 级本科生',
     introTitle: '喜欢把想法做成产品',
-    intro: '我是冉淳旭，上海理工大学电子信息大类 2026 级本科生。入学前就主动自学 AI 应用与编程，拿到了阿里云 6 项、科大讯飞 3 项 AI 技能认证，并独立完成了两个可在线试玩的网页小游戏。我性格耐心踏实、表达清晰，做过一个月的一对一暑期辅导，善于把抽象的东西拆开讲明白。接下来希望加入学科竞赛和课题组，在真实的项目里继续成长。',
+    intro: '我是冉淳旭，上海理工大学2026级电子信息类本科生。参与华为云校园导览比赛，借助AI推进构思、框架、功能与调试，队友负责PPT、视频和答辩；也与朋友在GitHub协作信息工具。做过新生手册和约一个月的暑期一对一辅导，愿意继续参与资料整理、竞赛交流和团队实践。',
     motto: '把想法变成作品，把作品变成经验。',
     info: [
       { icon: 'graduation-cap', label: '学校 / 专业', value: '上海理工大学 · 电子信息大类' },
-      { icon: 'calendar', label: '年级', value: '2026 级 · 预计 9 月入学' },
+      { icon: 'calendar', label: '年级', value: '2026 级 · 本科在读' },
       { icon: 'award', label: 'AI 技能认证', value: '阿里云 6 项 · 科大讯飞 3 项' },
       { icon: 'phone', label: '电话', value: '157 2031 5319' },
       { icon: 'mail', label: '邮箱', value: 'mypeshsp1@gmail.com' },
@@ -33,17 +33,17 @@ window.RESUME_CONFIG = {
     {
       icon: 'sparkles',
       title: 'AI 应用',
-      desc: '熟练使用主流 AI 工具，覆盖文生文、文生图、文生视频，能打磨提示词与产出物，把 AI 变成生产力。'
+      desc: '接触文生文、文生图与文生视频，尝试用AI整理需求、辅助实现和修改作品，继续补充编程基础。'
     },
     {
-      icon: 'gamepad-2',
-      title: '游戏开发',
-      desc: '用原生 JavaScript + Canvas 独立完成两款网页游戏，掌握碰撞检测、Boss 战、程序化音效等实战技能。'
+      icon: 'code-2',
+      title: '项目实践与协作',
+      desc: '在华为云校园导览项目中担任队长，推进构思、框架、功能与调试；也与朋友在GitHub协作信息工具，开发有AI辅助。'
     },
     {
       icon: 'presentation',
       title: '办公与内容',
-      desc: '熟练使用 Office 办公套件整理文档、表格与演示，用剪映完成视频剪辑、字幕与配乐。'
+      desc: '做过新生手册，也帮同学整理过文档和演示材料，关注资料来源、内容结构与阅读体验。'
     },
     {
       icon: 'message-circle',
@@ -62,10 +62,10 @@ window.RESUME_CONFIG = {
       { name: '沟通表达', value: 85 },
       { name: '耐心与责任心', value: 90 }
     ],
-    tags: ['AI 应用', 'JavaScript', 'Python', 'Office', '剪映', 'Canvas', '家教辅导', '沟通表达', '责任担当']
+    tags: ['AI 应用', '项目实践', 'GitHub 协作', '资料整理', '新生手册', '家教辅导', '沟通表达']
   },
   personality: {
-    intro: '我性格耐心踏实、表达清晰，喜欢把想法真正做出来。动手能力强，享受从零做出一个能玩、能用的作品的成就感，也乐于把学到的东西讲给别人听。',
+    intro: '喜欢把学习中遇到的需求做成实际作品，愿意听取建议，根据实际结果继续修改，也愿意与同学交流自己做过的事情。',
     cards: [
       {
         icon: 'cpu',
@@ -73,9 +73,9 @@ window.RESUME_CONFIG = {
         desc: '关注前沿科技，乐于上手各类 AI 工具，把新工具变成解决问题的助手。'
       },
       {
-        icon: 'gamepad-2',
-        title: '游戏开发',
-        desc: '独立完成两款网页游戏，享受从玩法设计到上线的完整过程。'
+        icon: 'code-2',
+        title: '合作实践',
+        desc: '参与校园导览与信息工具项目，接触需求整理、功能实现和团队分工。'
       },
       {
         icon: 'dumbbell',
@@ -88,11 +88,11 @@ window.RESUME_CONFIG = {
         desc: '用剪映制作短视频、剪辑与配字幕，享受从素材打磨到成片的过程。'
       }
     ],
-    tags: ['AI 探索', '游戏开发', '运动健身', '音视频创作', '耐心踏实', '表达清晰'],
+    tags: ['AI 探索', '项目协作', '运动健身', '音视频创作', '耐心踏实', '表达清晰'],
     groups: [
       {
         title: '动手实践型',
-        summary: '喜欢把想法变成能用的作品，从零独立完成两个游戏，享受完整落地。'
+        summary: '尝试把需求逐步做成作品，在AI辅助下推进校园导览和信息工具实践。'
       },
       {
         title: '耐心与责任心',
@@ -111,7 +111,7 @@ window.RESUME_CONFIG = {
       major: '电子信息大类 · 本科在读',
       points: [
         '主修电子信息大类基础课程，主动自学 AI 应用技能与编程，具备较强的学习意愿与适应能力。',
-        '入学后计划积极参与学科竞赛与课题组，在实践中积累项目与科研经验。'
+        '已经参与比赛和合作项目，希望继续通过资料整理、学术交流和实际任务积累经验。'
       ]
     },
     {
@@ -128,19 +128,19 @@ window.RESUME_CONFIG = {
   ],
   projects: [
     {
-      title: '坦克大战 · 网页小游戏',
-      desc: '用原生 JavaScript + Canvas 独立完成经典坦克大战玩法：玩家操控坦克移动射击、敌方 AI 追击、砖墙与基地碰撞、波次通关与胜负判定，地图中央拼出「RCX」身份标识。',
-      image: 'assets/project-tank.svg',
-      tech: ['HTML5 Canvas', 'JavaScript', '碰撞检测', 'WebAudio'],
-      link: 'https://ranchunxu.github.io/tank-battle/',
+      title: '校园导览 · 华为云比赛',
+      desc: '担任队长，借助AI推进构思、框架、功能实现与调试，队友负责PPT、视频和答辩。项目延续暑期新生手册，整理校园信息并提供导览。',
+      image: 'assets/proj-campus.svg',
+      tech: ['比赛队长', 'AI辅助实现', '校园服务'],
+      link: 'https://ranchunxu.github.io/campus-map/',
       source: 'https://github.com/ranchunxu'
     },
     {
-      title: '星际猎手 · 飞机大战',
-      desc: '独立完成的竖版弹幕射击游戏：4 大 Boss × 3 阶段、5 种武器 × 5 级升级、25 张升级卡、8 种敌机、无尽波次模式，赛博朋克霓虹科技风、单文件零依赖。',
-      image: 'assets/project-plane.svg',
-      tech: ['HTML5 Canvas', 'JavaScript', 'Roguelike', 'Boss 战'],
-      link: 'https://ranchunxu.github.io/plane-battle/',
+      title: '信息采集与推送 · GitHub协作',
+      desc: '与朋友在GitHub协作，借助AI开发微信、QQ信息采集与推送工具，将信息推送到飞书机器人和手机应用。这是共同参与的合作项目。',
+      image: 'assets/proj-collaboration.svg',
+      tech: ['GitHub协作', '信息整理', 'AI辅助开发'],
+      link: 'https://github.com/ranchunxu',
       source: 'https://github.com/ranchunxu'
     }
   ],
@@ -150,8 +150,8 @@ window.RESUME_CONFIG = {
       { icon: 'mail', label: '邮箱', value: 'mypeshsp1@gmail.com', href: 'mailto:mypeshsp1@gmail.com' },
       { icon: 'github', label: 'GitHub', value: 'github.com/ranchunxu', href: 'https://github.com/ranchunxu' },
       { icon: 'phone', label: '电话', value: '157 2031 5319', href: 'tel:15720315319' },
-      { icon: 'gamepad-2', label: '在线作品', value: '坦克大战 · 星际猎手', href: 'https://ranchunxu.github.io/tank-battle/' }
+      { icon: 'compass', label: '校园导览', value: '华为云比赛项目', href: 'https://ranchunxu.github.io/campus-map/' }
     ],
-    tags: ['AI', '游戏开发', '辅导', '项目合作']
+    tags: ['AI应用', '校园导览', '资料整理', '项目合作']
   }
 };

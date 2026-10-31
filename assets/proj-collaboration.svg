@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">信息采集与推送 GitHub协作项目</title>
+  <desc id="desc">微信和QQ信息经过整理，推送到飞书和手机的流程示意</desc>
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#0c3345"/><stop offset="1" stop-color="#071c33"/></linearGradient><pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#8fcdee" stroke-opacity=".07"/></pattern></defs>
+  <path fill="url(#bg)" d="M0 0H960V540H0z"/><path fill="url(#grid)" d="M0 0H960V540H0z"/>
+  <g font-family="system-ui, sans-serif"><text x="65" y="108" fill="#8fcdee" font-size="16" letter-spacing="4">GITHUB COLLABORATION</text><text x="63" y="189" fill="#eef5fb" font-size="45" font-weight="600">信息采集与推送</text><text x="65" y="238" fill="#a8c0d4" font-size="21">与朋友协作 · AI 辅助开发</text></g>
+  <g fill="#113a52" stroke="#70bde6" stroke-opacity=".6" stroke-width="1.5"><rect x="65" y="323" width="185" height="93" rx="14"/><rect x="387" y="323" width="185" height="93" rx="14"/><rect x="709" y="323" width="185" height="93" rx="14"/></g>
+  <g fill="none" stroke="#8fd5ed" stroke-width="2.5"><path d="M265 370h105m-11-8 11 8-11 8M587 370h105m-11-8 11 8-11 8"/></g>
+  <g font-family="system-ui, sans-serif" fill="#eef5fb" font-size="23" text-anchor="middle"><text x="157" y="379">微信 / QQ</text><text x="479" y="379">信息整理</text><text x="801" y="379">飞书 / 手机</text></g>
+  <text x="65" y="479" fill="#8fcdee" font-family="system-ui, sans-serif" font-size="17">让分散的信息更方便集中查看</text>
+</svg>
